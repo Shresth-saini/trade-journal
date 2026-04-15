@@ -604,8 +604,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  .db-sidebar { display: none; }
-  .db-main   { margin-left: 0 !important; }
+  .db-sidebar { transform: translateX(-100%); }
+  .db-main { margin-left: 0 !important; transition: margin 0.3s ease; }
+  .db-main.sidebar-open { margin-left: 240px !important; }
   .db-stats-row  { grid-template-columns: repeat(2,1fr); }
   .db-charts-row { grid-template-columns: 1fr; }
 }
@@ -2468,21 +2469,33 @@ textarea.form-input {
 @media (max-width: 1024px) {
   .db-sidebar {
     transform: translateX(-100%);
-    width: 240px;
+    width: 260px !important;
+    min-width: 260px !important;
     z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 20px 0 50px rgba(0,0,0,0.5);
+    background: var(--bg-secondary) !important;
   }
   .db-sidebar.mobile-open {
     transform: translateX(0);
+  }
+  .db-sidebar.mobile-open .db-logo-text,
+  .db-sidebar.mobile-open .db-nav-section-label,
+  .db-sidebar.mobile-open .db-nav-label,
+  .db-sidebar.mobile-open .db-account-info {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   .db-main {
     margin-left: 0 !important;
     width: 100% !important;
   }
   .db-stats-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
   .db-charts-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .aly-grid-2, .aly-grid-3, .aly-grid-5 {
     grid-template-columns: 1fr !important;
@@ -2490,6 +2503,11 @@ textarea.form-input {
   .db-topbar {
     padding: 0 16px;
   }
+  .cal-grid {
+    grid-template-columns: repeat(7, 1fr) !important;
+    font-size: 10px;
+  }
+  .calendar-day-pnl { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -2524,6 +2542,13 @@ textarea.form-input {
 }
 .fade-in {
   animation: fadeInUp 0.4s ease forwards;
+}
+
+.db-main.sidebar-open { margin-left: 175px; }
+.db-main.sidebar-closed { margin-left: 52px; }
+
+@media (max-width: 1024px) {
+  .db-main.sidebar-open, .db-main.sidebar-closed { margin-left: 0 !important; }
 }
 
 .mobile-only { display: none; }
