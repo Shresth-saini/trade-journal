@@ -50,7 +50,7 @@ export default function AnalyticsPage({ trades, stats }: Props) {
   }, [trades]);
 
   // Radar logic
-  const radarData = useMemo(() => getThunderRadarData(trades), [trades]);
+  const radarData = useMemo(() => getThunderRadarData(stats), [stats]);
 
   // Consistency streaks
   const consistency = useMemo(() => {
