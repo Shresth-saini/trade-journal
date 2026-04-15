@@ -34,7 +34,7 @@ function saveLocalTrades(trades: Trade[]) {
 // Ensure trades have unique IDs
 const generateId = () => Math.random().toString(36).substring(2, 15);
 
-export async function addTrade(trade: Omit<Trade, 'id'>): Promise<string> {
+export async function addTrade(trade: Omit<Trade, 'id' | 'createdAt'>): Promise<string> {
   const newTrade = { ...trade, createdAt: new Date().toISOString() };
   let id = generateId();
 
