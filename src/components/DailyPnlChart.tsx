@@ -57,11 +57,11 @@ export default function DailyPnlChart({ data, height = 210, formatDate }: Props)
         <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
         <XAxis 
           dataKey="date" 
-          tick={({ x, y, payload }) => {
+          tick={({ x, y, payload }: any) => {
             if (payload.value.startsWith('empty-')) return <g />;
             const label = formatDate ? formatDate(payload.value) : payload.value.slice(5);
             return (
-              <text x={x} y={y + 12} fill="#444460" fontSize={10} textAnchor="middle">
+              <text x={x} y={Number(y) + 12} fill="#444460" fontSize={10} textAnchor="middle">
                 {label}
               </text>
             );
