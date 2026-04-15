@@ -333,7 +333,7 @@ export default function Dashboard() {
       </aside>
 
       {/* ═══════════════ MAIN ═══════════════ */}
-      <div className="db-main" style={{ marginLeft: sidebarOpen ? 175 : 52 }}>
+      <div className={`db-main ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         {/* ── Topbar ── */}
         <header className="db-topbar">
           <div className="db-topbar-left">
